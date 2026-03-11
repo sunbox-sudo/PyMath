@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "mathlib"
+version = "0.1.0"
+description = "A math library built for learning"
+requires-python = ">=3.11"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov",   # coverage reports
+    "ruff",         # linting + formatting (replaces flake8+black)
+]
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]   # pycodestyle + pyflakes rules
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.coverage.report]
+omit = ["tests/*"]

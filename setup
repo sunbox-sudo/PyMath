@@ -1,0 +1,27 @@
+# Create venv (do this once per machine)
+python -m venv .venv
+
+# Activate — Linux/Mac
+source .venv/bin/activate
+
+# Activate — Windows (VSCode terminal)
+.venv\Scripts\activate
+
+# Install the project in editable mode + dev tools
+pip install -e ".[dev]"
+```
+
+The `-e` flag means **editable install** — changes to your `mathlib/` code take effect immediately without reinstalling.
+
+---
+
+### 4. `.gitignore`
+```
+.venv/
+__pycache__/
+*.pyc
+.coverage
+htmlcov/
+dist/
+*.egg-info/
+.vscode/
