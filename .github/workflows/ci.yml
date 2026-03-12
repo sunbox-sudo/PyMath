@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, dev]
   pull_request:
-    branches: [main]
+    branches: [main, dev]
 
 jobs:
   test:
@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        python-version: ["3.11", "3.12"]   # test against multiple versions
+        python-version: ["3.11", "3.12"]
 
     steps:
       - name: Checkout code
@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-          cache: "pip"                       # cache deps between runs = faster CI
+          cache: "pip"
 
       - name: Install dependencies
         run: pip install -e ".[dev]"
